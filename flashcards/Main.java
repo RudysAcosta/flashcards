@@ -1,17 +1,22 @@
 package flashcards;
 
+import flashcards.entity.Card;
+
 public class Main {
 
     public static void main(String[] args) {
         UserInput userInput = new UserInput();
 
-        System.out.println("Card:");
-        String card = userInput.getInput();
-        System.out.println(card);
-
-        System.out.println("Definition:");
+        String cardInput = userInput.getInput();
         String definition = userInput.getInput();
-        System.out.println(definition);
 
+        Card card = new Card(cardInput, definition);
+        String answer = userInput.getInput();
+
+        if (answer.equals(card.getDefinition())) {
+            System.out.println("Your answer is right!");
+        } else {
+            System.out.println("Your answer is wrong...");
+        }
     }
 }
